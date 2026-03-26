@@ -1,5 +1,5 @@
 // Netlify Serverless Function to proxy Noodoe API requests
-const fetch = require('node-fetch');
+// Uses Node 18 built-in fetch — no node-fetch dependency needed
 
 exports.handler = async (event, context) => {
     // Enable CORS
@@ -29,7 +29,7 @@ exports.handler = async (event, context) => {
         };
     }
 
-    const NOODOE_TOKEN = 'aLk-KQiQ-92ow8wJ.1dBNZ4lNyA_E4H1yS-mK7JoIUewu0N_tWFVyBQ-3s0A';
+    const NOODOE_TOKEN = process.env.NOODOE_TOKEN;
 
     try {
         const response = await fetch(`https://ev-os-api.noodoe.com/api/1.0/stations/${stationId}`, {
