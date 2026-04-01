@@ -5,8 +5,13 @@ const fetch = require('node-fetch');
 const app = express();
 const PORT = 3000;
 
-// Your Noodoe API token
-const NOODOE_TOKEN = 'aLk-KQiQ-92ow8wJ.1dBNZ4lNyA_E4H1yS-mK7JoIUewu0N_tWFVyBQ-3s0A';
+// Your Noodoe API token from environment variable
+const NOODOE_TOKEN = process.env.NOODOE_TOKEN;
+
+if (!NOODOE_TOKEN) {
+    console.error('❌ NOODOE_TOKEN environment variable is required');
+    process.exit(1);
+}
 
 // Enable CORS for all origins
 app.use(cors());
