@@ -673,11 +673,9 @@
             }
         });
 
-        // Fetch station status via Netlify serverless function
         async function fetchStationStatus(stationId) {
             try {
-                // Use Netlify function (works when deployed on Netlify)
-                const apiUrl = `/.netlify/functions/station?stationId=${stationId}`;
+                const apiUrl = `/api/station/${stationId}`;
 
                 const response = await fetch(apiUrl);
 
